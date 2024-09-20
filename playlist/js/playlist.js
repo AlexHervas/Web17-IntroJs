@@ -55,6 +55,8 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist is not found.
    */
   const addSongToPlaylist = (playlistName, song) => {
+    const foundedPlayList = playlists.find(playlist => playlists.name === playlistName);
+    
   };
 
   /**
