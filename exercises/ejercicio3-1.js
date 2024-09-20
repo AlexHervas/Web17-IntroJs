@@ -10,7 +10,7 @@ const restructuredInput = (input) => {
     return input.slice(0, -1).join("/") + "." + input[input.length -1];
 };
 
-restructuredInput(input1); // 'Downloads/Videos/capture.mp4'
+console.log(restructuredInput(input1)); // 'Downloads/Videos/capture.mp4'
 
 const input2 = [
     'CodinGame',
@@ -18,7 +18,7 @@ const input2 = [
     'py',
 ];
 
-restructuredInput(input2); // 'CodinGame/python.py'
+console.log(restructuredInput(input2)); // 'CodinGame/python.py'
 
 const input3 = [
     'programming',
@@ -30,4 +30,4 @@ const input3 = [
     'py',
 ];
 
-restructuredInput(input3); // 'programming/languages/easy/beginner/useful/pythonstuff.py'
+console.log(restructuredInput(input3)); // 'programming/languages/easy/beginner/useful/pythonstuff.py'
