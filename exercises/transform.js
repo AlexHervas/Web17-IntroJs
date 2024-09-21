@@ -28,8 +28,8 @@ const datos = [
     }
 ];
 
-const checkByJs = datos.filter(dato => dato.habilidades.includes('JavaScript'))
+const checkByJs = datos.filter(dato => dato.habilidades.includes('JavaScript'));
 console.log(checkByJs)
 
-const checkProjects = datos.flatMap(dato => dato.proyectos.map(dato => dato.nombre))
+const checkProjects = datos.flatMap(dato => dato.proyectos.map(dato => dato.nombre));
 console.log(checkProjects)

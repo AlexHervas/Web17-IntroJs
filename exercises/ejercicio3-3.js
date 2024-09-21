@@ -1,7 +1,7 @@
 const input1 = 'string';
 
 const yourFunction = (string) => {
-    return `${string.length} ${string.split("").reverse().join("")}`
+    return `${string.length} ${string.split("").toReversed().join("")}`
 };
 
 console.log(yourFunction(input1)); // '6 gnirts'

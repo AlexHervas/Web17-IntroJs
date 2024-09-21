@@ -28,8 +28,7 @@ const musicCatalog = () => {
    * @param {string} playlistName - The name of the new playlist.
    */
   const createPlaylist = (playlistName) => {
-    const newPLayList = {name: playlistName, songs: []};
-    playlists = [...playlists, newPLayList];
+    playlists = [...playlists, {name: playlistName, songs: []}];
   };
 
   /**
@@ -55,8 +54,20 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist is not found.
    */
   const addSongToPlaylist = (playlistName, song) => {
-    const foundedPlayList = playlists.find(playlist => playlists.name === playlistName);
-    
+    const foundedPlayList = playlists.find(playlist => playlist.name === playlistName);
+    if (!foundedPlayList) {
+      throw new Error('Playlist doesnt exist');
+    }
+    /* const favoriteOff = {...song, favorite: false};
+
+    foundedPlayList.songs.push(favoriteOff); No usar, muta valores*/
+    const favoriteOff = { name: foundedPlayList.name, songs: [...foundedPlayList.songs, { ...song, favorite: false }]};
+
+    playlists = playlists.map(playlist => {
+      if (playlist.name === foundedPlayList.name) return favoriteOff
+      return playlist
+      // return playlist.name === foundedPlayList.name ? favoriteOff : playlist
+    });
   };
 
   /**

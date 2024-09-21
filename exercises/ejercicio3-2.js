@@ -1,6 +1,7 @@
 const input = 10;
 const yourFunction = (number) => {
-    return String(number).split("").join("-")
+    const copy = String(number).split("").join("-");
+    return copy;
 };
 console.log(yourFunction(input)); // '1-0'
 const secondInput = 1;

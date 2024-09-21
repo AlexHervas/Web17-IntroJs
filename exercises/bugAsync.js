@@ -14,4 +14,3 @@ function obtenerUsuario(id) {
 
 const usuario = obtenerUsuario(1);
 console.log(usuario);
-    
