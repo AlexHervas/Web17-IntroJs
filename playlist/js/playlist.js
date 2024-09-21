@@ -76,7 +76,34 @@ const musicCatalog = () => {
    * @param {string} title - The title of the song to remove.
    * @throws {Error} If the playlist or song is not found.
    */
-  const removeSongFromPlaylist = (playlistName, title) => {};
+  const removeSongFromPlaylist = (playlistName, title) => {
+    const foundedPlayList = playlists.find(playlist => playlist.name === playlistName);
+  if (!foundedPlayList) {
+    throw new Error('Playlist doesnt exist');
+  };
+
+  /*
+  const songIndex = foundedPlayList.songs.findIndex(song => song.title === title);
+
+  if (songIndex === -1) {
+    throw new Error('Song doesnt exist');
+  };
+
+  foundedPlayList.songs.splice(songIndex, 1); 
+  Funciona pero guarda el indice, no el objeto, daria lugar a error,
+  y no modificamos playlists.
+  */
+  const removedSong = foundedPlayList.songs.find(song => song.title === title);
+  if (!removedSong) {
+    throw new Error('Song doesnt exist');
+  };
+
+  const updateSongs = foundedPlayList.songs.filter(song => song !== removedSong);
+
+  playlists = playlists.map(playlist => {
+    return playlist.name === foundedPlayList.name ? {name: foundedPlayList.name, songs: updateSongs} : playlist
+  });
+  };
 
   /**
    * Marks a song as a favorite or removes the favorite status.
