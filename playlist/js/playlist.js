@@ -110,7 +110,22 @@ const musicCatalog = () => {
    * @param {string} playlistName - The name of the playlist containing the song.
    * @param {string} title - The title of the song to mark as a favorite.
    */
-  const favoriteSong = (playlistName, title) => {};
+  const favoriteSong = (playlistName, title) => {
+  const foundedPlayList = playlists.find(playlist => playlist.name === playlistName);
+
+  if (!foundedPlayList) {
+    throw new Error('Playlist doesnt exist');
+  }
+  const constSongFound = foundedPlayList.songs.find(song => song.title === title);
+  const favoriteSongOn = foundedPlayList.songs.map(song => {
+    if (song === constSongFound) return {...song, favorite: true}
+    return song
+  });
+
+  playlists = playlists.map(playlist => {
+    return playlist.name === foundedPlayList.name ? {name: foundedPlayList.name, songs: favoriteSongOn} : playlist
+  });
+  };
 
   /**
    * Sorts songs in a specific playlist by a given criterion (title, artist, or duration).
